@@ -2,6 +2,7 @@
   <div class="user-profile">
     <div class="user-profile__user-panel">
       <h1>{{ state.user.username }}</h1>
+      <h2>{{userId}}</h2>
       <div class="user-profile__admin-badge" v-if="state.user.isAdmin">
         Admin
       </div>
@@ -45,12 +46,16 @@
 </template>
 <script>
 import { computed, reactive } from 'vue';
-import TwootItem from "./TwootItem.vue";
+import TwootItem from "../components/TwootItem";
+import {useRoute} from "vue-router";
 export default {
   name: "UserProfile",
   components: { TwootItem },
   setup()
   {
+    const route = useRoute();
+
+   const userId= computed(()=> route.params.userId)
    
    const state = reactive({
   newTwootContent: "",
@@ -108,7 +113,7 @@ export default {
       this.state.newTwootContent = "";
     }
 
-    return { state ,newTwootCharacterCount,fulName, followUser,toggleFavourite , createNewTwoot}
+    return { state ,newTwootCharacterCount,fulName, followUser,toggleFavourite , createNewTwoot, userId}
 
   } ,
 

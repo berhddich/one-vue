@@ -4,17 +4,14 @@
       <div class="navigation__logo">Twotter</div>
       <div class="navigation__user">{{ state.user.username }}</div>
     </nav>
-
-    <user-profile />
+<router-view/>
   </div>
 </template>
 
 <script>
 import { reactive } from "vue";
-import UserProfile from "./components/userProfile.vue";
 export default {
   name: "App",
-  components: { UserProfile },
   setup() {
     const state = reactive({
       user: {
