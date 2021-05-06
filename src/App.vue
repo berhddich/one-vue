@@ -2,7 +2,7 @@
   <div id="app">
     <nav>
       <div class="navigation__logo">Twotter</div>
-      <div class="navigation__user">{{ user.username }}</div>
+      <div class="navigation__user">{{ state.user.username }}</div>
     </nav>
 
     <user-profile />
@@ -10,18 +10,20 @@
 </template>
 
 <script>
+import { reactive } from "vue";
 import UserProfile from "./components/userProfile.vue";
 export default {
   name: "App",
   components: { UserProfile },
-  data(){
-
-    return {
+  setup() {
+    const state = reactive({
       user: {
-        username:'@Abdou'
-      }
-    }
-  }
+        username: "@Abdou",
+      },
+    });
+
+    return { state };
+  },
 };
 </script>
 
@@ -33,26 +35,20 @@ export default {
   color: #2c3e50;
   min-height: 95vh;
   background-color: #f3f5fa;
-    nav {
-
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 5%;
-        background-color: deeppink;
-        color: white;
-        .navigation__logo{
-        font-weight: bold;
-        font-size: 24px;
-        
-        }
-        .navigation__user{
-        
-        font-weight: bold;
-        
-        }
-        
-          }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5%;
+    background-color: deeppink;
+    color: white;
+    .navigation__logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .navigation__user {
+      font-weight: bold;
+    }
+  }
 }
 </style>
