@@ -20,14 +20,17 @@ export default {
       required: true,
     },
   },
-  methods:{
-favouritrTwoot(id)
+  setup(pr,ctx){
+
+ function  favouritrTwoot(id)
 {
-    this.$emit('favourite',id)
+    ctx.emit('favourite',id)
 
 }
+return{favouritrTwoot}
 
-  }
+  },
+ 
 };
 </script>
 
